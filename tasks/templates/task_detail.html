@@ -1,0 +1,58 @@
+<style>
+    button{
+        float:left;
+        margin-right: 1rem;
+    }
+</style>
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-5">
+            {{error}}
+ 
+            <h2> {{task.title}} </h2>
+        
+            <form method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary mx-3">
+                    Update
+                </button>
+            </form> 
+
+            <form action="{% url 'complete_task' task.id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-secondary mx-3">
+                    Complete
+                </button>
+            </form>
+        
+            <form action="{% url 'delete_task' task.id %}" method="POST">
+                {% csrf_token %}
+                <button class="btn btn-danger mx-3">
+                    Delete
+                </button>
+            </form>
+
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+
+
+
+
+    
+
+{% endblock %}

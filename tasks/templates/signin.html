@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+            <h1 class="text-center">Login</h1>
+
+                <h2 style='color:orangered'>{{error}} </h2>  
+
+                <form action="/signin/" method="post" class="card card-body">
+                    {% csrf_token %}
+                    <!-- {{form.as_p}} -->
+                    <div class="mb-3">
+                        <label for="username"></label>
+                        <input type="text" name="username" id="username" class="form-control" placeholder="Write your Username">
+                    </div>
+                    <div class="mb-3">
+                        <label for="password"></label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Write your password">
+                    </div>                  
+                    <button class="btn btn-primary">
+                        Signin
+                    </button>
+                </form>
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}
